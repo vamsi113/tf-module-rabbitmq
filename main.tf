@@ -5,7 +5,7 @@ resource "aws_instance" "rabbitmq" {
   vpc_security_group_ids = [aws_security_group.sg.id]
   iam_instance_profile = aws_iam_instance_profile.instance_profile.name
   tags = {
-    Name = "${var.env}-${var.name}-rabbitmq"
+    Name = "${var.env}-rabbitmq"
   }
 }
 
