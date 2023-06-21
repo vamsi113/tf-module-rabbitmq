@@ -1,6 +1,6 @@
 resource "aws_security_group" "sg" {
-  name        = "${var.env}-${var.name}-ec2.sg"
-  description = "${var.env}-${var.name}-ec2.sg"
+  name        = "${var.env}-${var.name}-rabbitmq.sg"
+  description = "${var.env}-${var.name}-rabbitmq.sg"
   vpc_id      = var.vpc_id
 
   ingress {
@@ -28,6 +28,6 @@ resource "aws_security_group" "sg" {
   }
 
   tags = {
-    Name = "${var.env}-${var.name}-ec2.sg"
+    Name = "${var.env}-${var.name}-rabbitmq.sg"
   }
 }
