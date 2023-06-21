@@ -9,8 +9,8 @@ resource "aws_instance" "rabbitmq" {
   provisioner "remote-exec" {
     connection {
       host = self.private_ip
-      SSH_USER = local.SSH_USER
-      SSH_PASS = local.SSH_PASS
+      user = local.SSH_USER
+      password = local.SSH_PASS
     }
     inline = [
       "yum install python39-devel -y",
