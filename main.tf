@@ -9,7 +9,7 @@ resource "aws_instance" "rabbitmq" {
   }
 }
 
-resource "null_resource" "ansible-apply" {
+resource "null_resource" "ansible_apply" {
   provisioner "remote-exec" {
     connection {
       host = aws_instance.rabbitmq.private_ip
