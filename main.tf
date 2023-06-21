@@ -13,8 +13,8 @@ resource "aws_instance" "rabbitmq" {
       password = local.SSH_PASS
     }
     inline = [
-      "yum install python39-devel -y",
-      "pip3.9 install ansible botocore boto3 python-jenkins",
+      "sudo yum install python39-devel -y",
+      "sudo pip3.9 install ansible botocore boto3 python-jenkins",
       "ansible-pull -i localhost, -U https://github.com/vamsi113/roboshop-ansible.git roboshop.yml -e ROLE_NAME=rabbitmq -e ENV=${var.env}"
     ]
   }
