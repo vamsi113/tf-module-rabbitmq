@@ -16,9 +16,10 @@ resource "null_resource" "ansible_apply" {
       user = local.SSH_USER
       password = local.SSH_PASS
     }
+
     inline = [
       "sudo yum install python39-devel -y",
-      "sudo pip3.9 install ansible botocore boto3 python-jenkins",
+      "sudo pip3.9 install ansible botocore boto3",
       "ansible-pull -i localhost, -U https://github.com/vamsi113/roboshop-ansible.git roboshop.yml -e ROLE_NAME=rabbitmq -e ENV=${var.env}"
     ]
   }
