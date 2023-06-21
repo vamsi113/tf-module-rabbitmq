@@ -6,4 +6,16 @@ resource "aws_instance" "rabbitmq" {
   tags = {
     Name = "${var.env}-${var.name}-rabbitmq"
   }
+  provisioner "remote-exec" {
+    connection {
+      host = self.private_ip
+      SSH_USER = local.SSH_USER
+      SSH_PASS = local.SSH_PASS
+    }
+    inline = [
+      "yum install python39-devel -y",
+      "pip3.9 install ansible botocore boto3 python-jenkins",
+      "ansible-pull -i localhost, -U https://github.com/vamsi113/roboshop-ansible.git roboshop.yml -e ROLE_NAME=rabbitmq -e ENV=${var.env}"
+    ]
+  }
 }
