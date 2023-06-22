@@ -8,7 +8,6 @@ resource "aws_instance" "rabbitmq" {
     Name = "${var.env}-rabbitmq"
   }
 }
-
 resource "null_resource" "ansible_apply" {
   provisioner "remote-exec" {
     connection {
